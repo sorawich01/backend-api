@@ -13,6 +13,18 @@ admin.initializeApp({
 	// databaseAuthVariableOverride: null
 });
 
+var db = admin.database();
+var ref = db.ref("about");
+ref.once("value", function (snapshot) {
+	console.log('snapshot : ', snapshot.val());
+	var snapsnap = snapshot.val();
+	app.get("/myinformation", (req, res) => {
+		console.log(snapsnap);
+		res.send(snapsnap);
+})
+}, function (errorObject) {
+	console.log("The read failed: " + errorObject.code);
+});
 
 
 

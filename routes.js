@@ -2,18 +2,7 @@
 const calculatorcontroller = require("./controller/calculator.js");
 // const getdatacontroller = require("./controller/getdatabase.js");
 
-var db = admin.database();
-var ref = db.ref("about");
-ref.once("value", function (snapshot) {
-	console.log('snapshot : ', snapshot.val());
-	var snapsnap = snapshot.val();
-	app.get("/myinformation", (req, res) => {
-		console.log(snapsnap);
-		res.send(snapsnap);
-})
-}, function (errorObject) {
-	console.log("The read failed: " + errorObject.code);
-});
+
 // HTTP method routes (such as get, post, put )
 module.exports = function (app) {
     app.get("/", (req, res) => {
