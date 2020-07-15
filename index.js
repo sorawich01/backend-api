@@ -4,6 +4,11 @@ const bodyParser = require('body-parser'); //import
 const app = express();
 const PORT = process.env.PORT || 8081
 
+
+
+/////////////////////////////////////
+// try to add firebase to project
+/////////////////////////////////////
 var admin = require("firebase-admin");
 var serviceAccount = require("./database/my-port-sorawich-firebase-adminsdk-p9a83-eddb99dcd1.json");
 
@@ -25,8 +30,9 @@ ref.once("value", function (snapshot) {
 }, function (errorObject) {
 	console.log("The read failed: " + errorObject.code);
 });
-
-
+/////////////////////////////////////
+// try to add firebase to project
+/////////////////////////////////////
 
 
 
