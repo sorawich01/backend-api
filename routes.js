@@ -1,26 +1,24 @@
 // controller it like gateway that connect to each api
 const calculatorcontroller = require("./controller/calculator.js");
-// const getdatacontroller = require("./controller/getdatabase.js");
-
+const dbController = require("./controller/getdatabase.js");
 
 // HTTP method routes (such as get, post, put )
 module.exports = function (app) {
-    app.get("/", (req, res) => {
-        res.send('Welcome to calculator main route!')
-		})
-		// app.route('/myinformation')
-		// 		.get(getdatacontroller.getdata)
-    app.route('/calculator')
-        .get(calculatorcontroller.about);
-    app.route('/calculator/plus')
-        .post(calculatorcontroller.plus);
-    app.route('/calculator/minus')
-        .post(calculatorcontroller.minus);
-    app.route('/calculator/multi')
-        .post(calculatorcontroller.multi);
-    app.route('/calculator/divide')
-        .post(calculatorcontroller.divide);
+	app.get("/", (req, res) => {
+		res.send('Welcome to calculator main route!')});
+	app.route('/calculator')
+		.get(calculatorcontroller.about);
+	app.route('/calculator/plus')
+		.post(calculatorcontroller.plus);
+	app.route('/calculator/minus')
+		.post(calculatorcontroller.minus);
+	app.route('/calculator/multi')
+		.post(calculatorcontroller.multi);
+	app.route('/calculator/divide')
+		.post(calculatorcontroller.divide);
 
+	app.route('/myinformation')
+		.get(dbController.getdata);
 };
 
 

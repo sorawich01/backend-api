@@ -4,40 +4,6 @@ const bodyParser = require('body-parser'); //import
 const app = express();
 const PORT = process.env.PORT || 8081
 
-
-
-/////////////////////////////////////
-// try to add firebase to project
-/////////////////////////////////////
-var admin = require("firebase-admin");
-var serviceAccount = require("./database/my-port-sorawich-firebase-adminsdk-p9a83-eddb99dcd1.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-	databaseURL: "https://my-port-sorawich.firebaseio.com",
-	// databaseAuthVariableOverride: null
-});
-
-var db = admin.database();
-var ref = db.ref("about");
-ref.once("value", function (snapshot) {
-	console.log('snapshot : ', snapshot.val());
-	var snapsnap = snapshot.val();
-	app.get("/myinformation", (req, res) => {
-		console.log(snapsnap);
-		res.send(snapsnap);
-})
-}, function (errorObject) {
-	console.log("The read failed: " + errorObject.code);
-});
-/////////////////////////////////////
-// try to add firebase to project
-/////////////////////////////////////
-
-
-
-
-
 const {handleError, ErrorHandler } = require('./model/error.js')
 
 // parse application/json    can use req.body
@@ -52,14 +18,12 @@ app.use((err, req, res, next) => {
   handleError(err, res);
 });
 
-
 const routes = require('./routes');
 routes(app);
 
-
 // create server at port 3000
 var server= app.listen(PORT,function() {
-    console.log('App listening on port ' + PORT);
+  console.log('App listening on port ' + PORT);
 });
 
 module.exports = server;

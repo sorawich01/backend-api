@@ -1,13 +1,10 @@
-const modelgetdatabase = require("../model/getdatabase.js");
-// console.log('model get data : ' , modelgetdatabase);
-var controllers = {
-	getdata : function(req , res){
-		var value = modelgetdatabase.getdata();
-		// var value = 123;
-		console.log('value :', value)
-		return res.json(value);
+const  dbModel = require('../model/get');
+
+var controldb = {
+	getdata : async function (req, res) {
+		var aaa = await dbModel.getdatamodel();
+		// console.log('aaaaaaaaaaaaaaa', aaa);
+		return res.send(aaa);
 	}
 }
-
-module.exports = controllers;
-
+module.exports = controldb;
